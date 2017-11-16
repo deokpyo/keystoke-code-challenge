@@ -12,6 +12,7 @@ var index = require("./routes/index");
 var users = require("./routes/users");
 var app = express();
 
+// set up mongo db connection
 mongoose
   .connect(process.env.DB_HOST, {
     useMongoClient: true

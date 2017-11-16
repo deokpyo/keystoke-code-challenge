@@ -36,7 +36,7 @@ router.get("/:action", function(req, res, next) {
     utils.JWT
       .verify(token, process.env.TOKEN_SECRET)
       .then(function(decode) {
-        return controllers.profile.findById(decode.id);
+        return controllers.user.findById(decode.id);
       })
       .then(function(profile) {
         res.json({
@@ -56,7 +56,7 @@ router.get("/:action", function(req, res, next) {
 
 router.post("/register", function(req, res, next) {
   var credentials = req.body;
-  controllers.profile
+  controllers.user
     .create(credentials)
     .then(function(profile) {
       // create profile token
@@ -80,7 +80,7 @@ router.post("/register", function(req, res, next) {
 router.post("/login", function(req, res, next) {
   var credentials = req.body;
 
-  controllers.profile
+  controllers.user
     .find({ email: credentials.email }, true)
     .then(function(profiles) {
       if (profiles.length == 0) {
