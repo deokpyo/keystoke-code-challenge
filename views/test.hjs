@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>Create User</h1>
+    <form action="/api/employee" method="post">
+        <input type="email" name="email" placeholder="email" />
+        <br/>
+        <input type="password" name="password" placeholder="password" />
+        <br/>
+        <input type="submit" value="Create User" />
+    </form>
+  </body>
+</html>
