@@ -38,10 +38,10 @@ router.get("/:action", function(req, res, next) {
       .then(function(decode) {
         return controllers.user.findById(decode.id);
       })
-      .then(function(profile) {
+      .then(function(user) {
         res.json({
           confirm: "success",
-          profile: profile
+          user: user
         });
       })
       .catch(function(err) {
@@ -58,14 +58,14 @@ router.post("/register", function(req, res, next) {
   var credentials = req.body;
   controllers.user
     .create(credentials)
-    .then(function(profile) {
+    .then(function(user) {
       // create profile token
-      var token = utils.JWT.sign({ id: profile.id }, process.env.TOKEN_SECRET);
+      var token = utils.JWT.sign({ id: user.id }, process.env.TOKEN_SECRET);
       req.session.token = token;
 
       res.json({
         confirm: "success",
-        profile: profile,
+        user: user,
         token: token
       });
     })

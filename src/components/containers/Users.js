@@ -1,26 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { APIManager } from "../../utils";
+import actions from "../../actions";
 
 class Users extends Component {
   constructor() {
     super();
     this.state = {
-      profiles: []
+      users: []
     };
   }
   componentDidMount() {
     APIManager.get("/api/user", null, (err, response) => {
       const results = response.results;
-      // this.props.profilesReceived(results);
-      this.setState({
-        profiles: results
-      });
+      this.props.usersReceived(results);
     });
   }
 
   render() {
-    const list = this.state.profiles.map((profile, i) => {
-      return <li key={profile.id}>{profile.email}</li>;
+    const list = this.props.users.map((user, i) => {
+      return <li key={user.id}>{user.email}</li>;
     });
     return (
       <div>
@@ -31,4 +30,16 @@ class Users extends Component {
   }
 }
 
-export default Users;
+const stateToProps = state => {
+  return {
+    users: state.user.list
+  };
+};
+
+const dispatchToProps = dispatch => {
+  return {
+    usersReceived: user => dispatch(actions.usersReceived(user))
+  };
+};
+
+export default connect(stateToProps, dispatchToProps)(Users);

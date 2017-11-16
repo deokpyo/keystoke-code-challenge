@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Divider } from "semantic-ui-react";
 import { Login, Register } from "../views";
 import { APIManager } from "../../utils";
+import actions from "../../actions";
 
 class Profile extends Component {
   constructor() {
@@ -12,19 +14,18 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    // check current user
+    // check for logged in user
     APIManager.get("/users/currentuser", null, (err, response) => {
       if (err) {
         alert(err);
         return;
       }
-      if (response.profile == null) {
+      if (response.user == null) {
         // user is NOT logged in
         return;
       }
       // user is logged in
-      console.log('current user: ' + JSON.stringify(response))
-      // this.props.currentUserReceived(response.profile);
+      this.props.currentUserReceived(response.user);
     });
   }
 
@@ -35,8 +36,7 @@ class Profile extends Component {
         alert(msg);
         return;
       }
-      console.log("REGISTERED: " + JSON.stringify(response));
-      // this.props.profileCreated(response.profile);
+      this.props.userCreated(response.user);
     });
   }
   login(credentials) {
@@ -46,8 +46,7 @@ class Profile extends Component {
         alert(msg);
         return;
       }
-      console.log("LOGGED IN: " + JSON.stringify(response));
-      // this.props.currentUserReceived(response.profile);
+      this.props.currentUserReceived(response.profile);
     });
   }
 
@@ -62,4 +61,17 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const stateToProps = state => {
+  return {
+    currentUser: state.user.currentUser
+  };
+};
+
+const dispatchToProps = dispatch => {
+  return {
+    userCreated: user => dispatch(actions.userCreated(user)),
+    currentUserReceived: user => dispatch(actions.currentUserReceived(user))
+  };
+};
+
+export default connect(stateToProps, dispatchToProps)(Profile);
