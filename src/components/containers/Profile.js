@@ -4,7 +4,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h3>Profile Component</h3>
+        <h4>Profile Component</h4>
       </div>
     );
   }

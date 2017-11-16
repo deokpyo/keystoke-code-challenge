@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h2>Keystoke Users</h2>
+          <h3>Keystoke Users</h3>
           <div className="col s12 m12 l4">
             <Profile />
           </div>
