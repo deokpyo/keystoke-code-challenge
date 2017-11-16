@@ -16,6 +16,7 @@
     "express": "~4.15.5",
     "hjs": "~0.0.6",
     "jsonwebtoken": "^8.1.0",
+    "material-ui": "^0.19.4",
     "mongoose": "^4.13.2",
     "morgan": "~1.9.0",
     "react": "^16.1.1",
