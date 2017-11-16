@@ -18,7 +18,7 @@ module.exports = {
         }
 
         var summaries = [];
-        Users.forEach(function(User) {
+        users.forEach(function(User) {
           summaries.push(User.summary());
         });
         resolve(summaries);

@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import { Users, Profile } from "../containers";
+import { Grid } from "semantic-ui-react";
 
 class Home extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <h3>Keystoke Users</h3>
-          <div className="col s12 m12 l4">
+      <Grid stackable>
+        <Grid.Row>
+          <h1>Keystoke Users</h1>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={6}>
             <Profile />
-          </div>
-          <div className="col s12 m12 l8">
+          </Grid.Column>
+          <Grid.Column width={10}>
             <Users />
-          </div>
-        </div>
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

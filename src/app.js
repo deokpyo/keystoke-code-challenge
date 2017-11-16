@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Home } from "./components/layout";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { Container } from "semantic-ui-react";
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
+      <Container>
         <Home />
-      </MuiThemeProvider>
+      </Container>
     );
   }
 }

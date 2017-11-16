@@ -9,6 +9,7 @@ var sessions = require("client-sessions");
 require("dotenv").config();
 
 var index = require("./routes/index");
+var api = require("./routes/api");
 var users = require("./routes/users");
 var app = express();
 
@@ -45,6 +46,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", index);
+app.use("/api", api);
 app.use("/users", users);
 
 // catch 404 and forward to error handler
