@@ -22,6 +22,7 @@ class RegisterForm extends Component {
       account: updated
     });
   }
+
   createAccount(event) {
     event.preventDefault();
     if (
@@ -33,8 +34,21 @@ class RegisterForm extends Component {
       alert("Please fill out all required fields.");
       return;
     }
+    if (!this.checkEmail(this.state.account.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     this.props.onRegister(this.state.account);
   }
+
+  checkEmail(email) {
+    let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(email)) {
+      return false;
+    }
+    return true;
+  }
+
   onGoogleSignUp(profile) {
     const googleProfile = {
       firstName: profile.givenName,
@@ -46,9 +60,11 @@ class RegisterForm extends Component {
       account: googleProfile
     });
   }
+
   showLogin() {
     this.props.onShowLogin();
   }
+
   resetFields() {
     const reset = {
       firstName: "",

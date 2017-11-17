@@ -78518,7 +78518,20 @@ var LoginForm = function (_Component) {
         alert("Please enter your account password.");
         return;
       }
+      if (!this.checkEmail(this.state.account.email)) {
+        alert("Please enter a valid email address.");
+        return;
+      };
       this.props.onLogin(this.state.account);
+    }
+  }, {
+    key: "checkEmail",
+    value: function checkEmail(email) {
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (!filter.test(email)) {
+        return false;
+      }
+      return true;
     }
   }, {
     key: "submitGoogleLogin",
@@ -78666,7 +78679,20 @@ var RegisterForm = function (_Component) {
         alert("Please fill out all required fields.");
         return;
       }
+      if (!this.checkEmail(this.state.account.email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
       this.props.onRegister(this.state.account);
+    }
+  }, {
+    key: "checkEmail",
+    value: function checkEmail(email) {
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (!filter.test(email)) {
+        return false;
+      }
+      return true;
     }
   }, {
     key: "onGoogleSignUp",

@@ -39,7 +39,19 @@ class LoginForm extends Component {
       alert("Please enter your account password.");
       return;
     }
+    if(!this.checkEmail(this.state.account.email)){
+      alert("Please enter a valid email address.");
+      return;
+    };
     this.props.onLogin(this.state.account);
+  }
+
+  checkEmail(email) {
+    let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(email)) {
+      return false;
+    }
+    return true;
   }
 
   submitGoogleLogin(profile) {
