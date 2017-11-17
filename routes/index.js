@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* GET test page. */
 router.get('/google08bf4dee2ce1be38.html', function(req, res, next) {
-  res.render('gogole', null);
+  res.render('google', null);
 });
 
 module.exports = router;
