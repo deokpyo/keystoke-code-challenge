@@ -1,4 +1,5 @@
 import Profile from "./Profile";
 import Users from "./Users";
+import MainHeader from "./MainHeader";
 
-export { Profile, Users };
+export { Profile, Users, MainHeader };

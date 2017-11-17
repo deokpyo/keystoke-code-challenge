@@ -11,7 +11,6 @@ export default {
           callback(err, null);
           return;
         }
-        //console.log(JSON.stringify(response.body))
         const confirm = response.body.confirm;
         if (confirm != "success") {
           callback({ message: response.body.message }, null);
@@ -30,7 +29,24 @@ export default {
           callback(err, null);
           return;
         }
-        //console.log(JSON.stringify(response.body))
+        const confirm = response.body.confirm;
+        if (confirm != "success") {
+          callback({ message: response.body.message }, null);
+          return;
+        }
+        callback(null, response.body);
+      });
+  },
+  put: (endpoint, params, callback) => {
+    superagent
+      .put(endpoint)
+      .send(params)
+      .set("Accept", "application/json")
+      .end((err, response) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
         const confirm = response.body.confirm;
         if (confirm != "success") {
           callback({ message: response.body.message }, null);

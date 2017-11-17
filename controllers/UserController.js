@@ -53,13 +53,15 @@ module.exports = {
     });
   },
 
-  update: function(id, params, callback) {
-    User.findByIdAndUpdate(id, params, { new: true }, function(err, user) {
-      if (err) {
-        callback(err, null);
-        return;
-      }
-      callback(null, user);
+  update: function(id, params) {
+    return new Promise(function(resolve, reject) {
+      User.findByIdAndUpdate(id, params, { new: true }, function(err, user) {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(user.summary());
+      });
     });
   }
 };

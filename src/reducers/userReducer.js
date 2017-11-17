@@ -13,7 +13,6 @@ export default (state = initialState, action) => {
       return updated;
 
     case constants.USER_CREATED:
-      console.log("USER_CREATED: " + JSON.stringify(action.user));
       let updatedList = Object.assign([], updated.list);
       updatedList.push(action.user);
       updated["list"] = updatedList;
@@ -21,7 +20,6 @@ export default (state = initialState, action) => {
       return updated;
 
     case constants.CURRENT_USER_RECEIVED:
-      console.log("CURRENT_USER_RECEIVED: " + JSON.stringify(action.user));
       updated["currentUser"] = action.user;
       return updated;
 

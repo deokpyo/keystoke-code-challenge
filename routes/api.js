@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var controllers = require("../controllers");
 
+// GET route
 router.get("/:resource", function(req, res, next) {
   var resource = req.params.resource;
   var controller = controllers[resource];
@@ -29,37 +30,12 @@ router.get("/:resource", function(req, res, next) {
     });
 });
 
-router.get("/:resource/:id", function(req, res, next) {
+// PUT route to update by id
+router.put("/:resource/:id", function(req, res, next) {
   var resource = req.params.resource;
-  var controller = controllers[resource];
-  if (controller == null) {
-    res.json({
-      confirm: "fail",
-      message: "invalid resource"
-    });
-    return;
-  }
-
   var id = req.params.id;
-  controller
-    .findById(id)
-    .then(function(result) {
-      res.json({
-        confirm: "success",
-        results: result
-      });
-    })
-    .catch(function(err) {
-      res.json({
-        confirm: "fail",
-        message: "resource:" + resource + " id:" + id + " | not found"
-      });
-    });
-});
-
-router.post("/:resource", function(req, res, next) {
-  var resource = req.params.resource;
   var controller = controllers[resource];
+
   if (controller == null) {
     res.json({
       confirm: "fail",
@@ -67,12 +43,13 @@ router.post("/:resource", function(req, res, next) {
     });
     return;
   }
+
   controller
-    .create(req.body)
-    .then(function(result) {
+    .update(id, req.body)
+    .then(function(data) {
       res.json({
         confirm: "success",
-        results: result
+        results: data
       });
     })
     .catch(function(err) {

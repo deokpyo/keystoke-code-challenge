@@ -5,10 +5,7 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      account: {
-        email: "",
-        password: ""
-      }
+      account: {}
     };
   }
 
@@ -47,7 +44,7 @@ class Login extends Component {
             id="password"
           />
         </Form.Field>
-        <Button onClick={this.login.bind(this)}>Login</Button>
+        <Button onClick={this.login.bind(this)} primary fluid>Login</Button>
       </Form>
     );
   }

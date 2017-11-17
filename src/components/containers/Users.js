@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Card } from "semantic-ui-react";
+import { UserCard } from "../views";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
 
@@ -18,15 +20,10 @@ class Users extends Component {
   }
 
   render() {
-    const list = this.props.users.map((user, i) => {
-      return <li key={user.id}>{user.email}</li>;
+    const userCard = this.props.users.map((user, i) => {
+      return <UserCard user={user} key={user.id} />;
     });
-    return (
-      <div>
-        <h3>Users</h3>
-        <ul>{list}</ul>
-      </div>
-    );
+    return <Card.Group>{userCard}</Card.Group>;
   }
 }
 

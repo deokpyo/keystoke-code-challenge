@@ -5,12 +5,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      account: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-      }
+      account: {}
     };
   }
 
@@ -66,7 +61,7 @@ class Register extends Component {
             id="password"
           />
         </Form.Field>
-        <Button onClick={this.createAccount.bind(this)}>Create Account</Button>
+        <Button onClick={this.createAccount.bind(this)} secondary fluid>Create Account</Button>
       </Form>
     );
   }
