@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Users, Profile, MainHeader } from "../containers";
 import { Grid, Divider, Segment } from "semantic-ui-react";
 
-class Home extends Component {
+class DashboardLayout extends Component {
   render() {
     return (
       <Grid stackable>
         <Grid.Row>
-
           <Grid.Column width={16}>
             <MainHeader />
             <Profile />
@@ -24,4 +23,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default DashboardLayout;

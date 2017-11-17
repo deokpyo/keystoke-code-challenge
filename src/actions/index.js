@@ -13,6 +13,12 @@ export default {
       user: user
     };
   },
+  userUpdated: user => {
+    return {
+      type: constants.USER_UPDATED,
+      user: user
+    };
+  },
   currentUserReceived: user => {
     return {
       type: constants.CURRENT_USER_RECEIVED,

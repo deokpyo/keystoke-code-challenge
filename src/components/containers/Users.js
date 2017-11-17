@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card } from "semantic-ui-react";
+import { Card, Responsive } from "semantic-ui-react";
 import { UserCard } from "../views";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
@@ -23,7 +23,29 @@ class Users extends Component {
     const userCard = this.props.users.map((user, i) => {
       return <UserCard user={user} key={user.id} />;
     });
-    return <Card.Group>{userCard}</Card.Group>;
+    return (
+      <div>
+        <Responsive as={Card.Group} {...Responsive.onlyMobile} stackable={true}>
+          {userCard}
+        </Responsive>
+        <Responsive
+          as={Card.Group}
+          {...Responsive.onlyTablet}
+          stackable={true}
+          itemsPerRow={2}
+        >
+          {userCard}
+        </Responsive>
+        <Responsive
+          as={Card.Group}
+          {...Responsive.onlyComputer}
+          stackable={true}
+          itemsPerRow={4}
+        >
+          {userCard}
+        </Responsive>
+      </div>
+    );
   }
 }
 

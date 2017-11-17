@@ -1,3 +1,4 @@
-import Home from "./Home";
+import DashboardLayout from "./DashboardLayout";
+import LoginLayout from "./LoginLayout";
 
-export { Home };
+export { DashboardLayout, LoginLayout };

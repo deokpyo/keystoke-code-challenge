@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Divider, Button, Header } from "semantic-ui-react";
+import request from "superagent";
 import { Login, Register, EditModal } from "../views";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
+
+const CLOUDINARY_UPLOAD_PRESET = "mcbgaoxt";
+const CLOUDINARY_UPLOAD_URL =
+  "https://api.cloudinary.com/v1_1/dspcivept/upload";
 
 class Profile extends Component {
   constructor() {
@@ -47,7 +52,12 @@ class Profile extends Component {
         alert(msg);
         return;
       }
+      console.log(response);
       alert("Profile has been updated.");
+      this.props.userUpdated(response.results);
+      this.setState({
+        modal: false
+      });
     });
   }
   login(credentials) {
@@ -69,6 +79,21 @@ class Profile extends Component {
       }
       // user is logged out
       this.props.currentUserReceived(null);
+    });
+  }
+  uploadImage(imageFile, currentUser) {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
+      .field("file", imageFile);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+      currentUser["image"] =
+        response.body.public_id + "." + response.body.format;
+      this.update(currentUser);
     });
   }
   openModal() {
@@ -114,6 +139,7 @@ class Profile extends Component {
             <EditModal
               open={this.state.modal}
               onUpdate={this.update.bind(this)}
+              onUpload={this.uploadImage.bind(this)}
               onClose={this.closeModal.bind(this)}
               user={this.props.currentUser}
             />
@@ -133,6 +159,7 @@ const stateToProps = state => {
 const dispatchToProps = dispatch => {
   return {
     userCreated: user => dispatch(actions.userCreated(user)),
+    userUpdated: user => dispatch(actions.userUpdated(user)),
     currentUserReceived: user => dispatch(actions.currentUserReceived(user))
   };
 };

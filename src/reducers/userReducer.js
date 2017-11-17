@@ -19,6 +19,17 @@ export default (state = initialState, action) => {
       updated["currentUser"] = action.user;
       return updated;
 
+    case constants.USER_UPDATED:
+      let updatedUserList = Object.assign([], updated.list);
+      updatedUserList.map((user, i) => {
+        if (user.id === action.user.id) {
+          updatedUserList[i] = action.user;
+        }
+      });
+      updated["list"] = updatedUserList;
+      updated["currentUser"] = action.user;
+      return updated;
+
     case constants.CURRENT_USER_RECEIVED:
       updated["currentUser"] = action.user;
       return updated;

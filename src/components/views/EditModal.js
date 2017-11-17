@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { Button, Modal, Header, Image, Form } from "semantic-ui-react";
+import { Button, Modal, Header, Image, Form, Grid } from "semantic-ui-react";
+import Dropzone from "react-dropzone";
 
 class EditModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: props.user
+      user: props.user,
+      image: props.user.image,
+      file: null
     };
   }
 
@@ -18,14 +21,40 @@ class EditModal extends Component {
   }
 
   updateUser() {
-    this.props.onUpdate(this.state.user);
+    // check for updated profile image
+    if (this.props.user.image !== this.state.image) {
+      this.props.onUpload(this.state.file, this.state.user);
+    } else {
+      this.props.onUpdate(this.state.user);
+    }
   }
 
   closeModal() {
+    this.setState({
+      image: this.props.user.image,
+      file: null
+    });
     this.props.onClose();
   }
 
+  onImageDrop(file) {
+    this.setState({
+      image: file[0].preview,
+      file: file[0]
+    });
+  }
+
   render() {
+    const style = {
+      marginRight: "3%",
+      maxWidth: "300px",
+      padding: "1%",
+      textAlign: "center",
+      borderWidth: "2px",
+      borderColor: "rgb(102, 102, 102)",
+      borderStyle: "dashed",
+      borderRadius: "5px"
+    };
     return (
       <Modal
         dimmer="blurring"
@@ -33,12 +62,21 @@ class EditModal extends Component {
         onClose={this.closeModal.bind(this)}
       >
         <Modal.Header>Edit Profile</Modal.Header>
-        <Modal.Content image>
+        <Modal.Content>
           <Image
             wrapped
             size="medium"
-            src={this.state.user.image || "./images/default.png"}
+            src={this.state.image || "./images/default.svg"}
           />
+          <Dropzone
+            multiple={false}
+            accept="image/*"
+            style={style}
+            onDrop={this.onImageDrop.bind(this)}
+          >
+            <p>Drop an image here or click to select a file.</p>
+          </Dropzone>
+
           <Modal.Description>
             <Form>
               <Form.Field>
@@ -61,7 +99,9 @@ class EditModal extends Component {
               </Form.Field>
               <Form.TextArea
                 id="description"
-                value={this.state.user.description || "Description"}
+                value={
+                  this.state.user.description || "User has no description."
+                }
                 placeholder="Description"
                 onChange={this.updateInput.bind(this)}
               />
