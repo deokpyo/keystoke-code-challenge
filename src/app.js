@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Home from "./components";
-import { DashboardLayout, LoginLayout } from "./components/layout";
 import { Container } from "semantic-ui-react";
 import store from "./stores";
 import { Provider } from "react-redux";

@@ -3,10 +3,11 @@ import Moment from "react-moment";
 import { Card, Icon, Image, Message } from "semantic-ui-react";
 
 const imageLink =
-  "https://res.cloudinary.com/dspcivept/image/upload/w_200,h_200,c_crop,g_face/";
+  "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
+//  "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,g_face,c_thumb/";
 
 const style = {
-  height: "100px",
+  height: "120px",
   overflow: "auto"
 };
 
@@ -16,15 +17,16 @@ class UserCard extends Component {
   }
 
   render() {
+    let imgSource = "";
+    if (this.props.user.image) {
+      imgSource = imageLink + this.props.user.image;
+    } else {
+      imgSource = "./images/default.png";
+    }
     return (
       <Card>
         <Card.Content>
-          <Image
-            circular
-            floated="right"
-            size="mini"
-            src={imageLink + this.props.user.image || "./images/default.svg"}
-          />
+          <Image circular floated="right" size="mini" src={imgSource} />
           <Card.Header>
             {" "}
             {this.props.user.firstName} {this.props.user.lastName}
@@ -35,7 +37,6 @@ class UserCard extends Component {
           </Card.Meta>
           <Card.Description>
             <Message style={style}>
-              <Message.Header>About Me</Message.Header>
               <p>{this.props.user.description || "User has no description."}</p>
             </Message>
           </Card.Description>

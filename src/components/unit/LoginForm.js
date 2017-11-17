@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Form, Divider } from "semantic-ui-react";
+import { Button, Form, Divider, Segment } from "semantic-ui-react";
 
-class Login extends Component {
+class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -24,30 +24,37 @@ class Login extends Component {
 
   render() {
     return (
-      <Form>
-        <h3>Login</h3>
-        <Form.Field>
-          <label>Email</label>
-          <input
-            type="text"
+      <Form size="large">
+        <Segment stacked>
+          <Form.Input
+            fluid
+            id="email"
+            icon="user"
+            iconPosition="left"
             placeholder="Email"
             onChange={this.updateAccount.bind(this)}
-            id="email"
           />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input
-            type="password"
+          <Form.Input
+            fluid
+            id="password"
+            icon="lock"
+            iconPosition="left"
             placeholder="Password"
             onChange={this.updateAccount.bind(this)}
-            id="password"
+            type="password"
           />
-        </Form.Field>
-        <Button onClick={this.login.bind(this)} primary fluid>Login</Button>
+
+          <Button
+            color="orange"
+            fluid
+            size="large"
+            onClick={this.login.bind(this)}
+            content="Login"
+          />
+        </Segment>
       </Form>
     );
   }
 }
 
-export default Login;
+export default LoginForm;

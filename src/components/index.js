@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Divider, Segment } from "semantic-ui-react";
+import { Loader, Dimmer, Transition } from "semantic-ui-react";
 import { APIManager } from "../utils";
-import { LoginForm } from "./containers";
+import { LoginLayout, DashboardLayout } from "./containers";
 import actions from "../actions";
 
 class Home extends Component {
   constructor() {
     super();
+    this.state = {
+      loading: true
+    };
   }
 
   componentDidMount() {
@@ -18,22 +21,45 @@ class Home extends Component {
         return;
       }
       if (response.user == null) {
-        // user is NOT logged in
+        setTimeout(
+          () =>
+            this.setState({
+              loading: false
+            }),
+          500
+        );
         return;
       }
       // user is logged in
-      console.log(response);
       this.props.currentUserReceived(response.user);
+      setTimeout(
+        () =>
+          this.setState({
+            loading: false
+          }),
+        500
+      );
     });
   }
   render() {
+    const { loading } = this.state;
     return (
       <div>
-        {this.props.currentUser == null ? (
-          <LoginForm />
-        ) : (
-          <h1>User is Logged In</h1>
-        )}
+        <Transition
+          visible={loading}
+          unmountOnHide={true}
+          animation="scale"
+          duration={500}
+        >
+          <Dimmer active inverted>
+            <Loader inverted size="large">
+              Loading
+            </Loader>
+          </Dimmer>
+        </Transition>
+        <Transition visible={!loading} animation="scale" duration={500}>
+          {this.props.currentUser == null ? <LoginLayout /> : <DashboardLayout />}
+        </Transition>
       </div>
     );
   }

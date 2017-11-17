@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Responsive } from "semantic-ui-react";
-import { UserCard } from "../views";
+import { UserCard } from "../unit";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
 
-class Users extends Component {
+class CurrentUsers extends Component {
   constructor() {
     super();
     this.state = {
@@ -61,4 +61,4 @@ const dispatchToProps = dispatch => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(Users);
+export default connect(stateToProps, dispatchToProps)(CurrentUsers);

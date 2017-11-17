@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button, Form, Divider } from "semantic-ui-react";
+import { Button, Form, Segment } from "semantic-ui-react";
 
-class Register extends Component {
+class RegisterForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,48 +23,45 @@ class Register extends Component {
 
   render() {
     return (
-      <Form>
-        <h3>Register</h3>
-        <Form.Field>
-          <label>First Name</label>
-          <input
-            type="text"
+      <Form size="large">
+        <Segment stacked>
+          <Form.Input
+            fluid
+            id="firstName"
             placeholder="First Name"
             onChange={this.updateAccount.bind(this)}
-            id="firstName"
           />
-        </Form.Field>
-        <Form.Field>
-          <label>Last Name</label>
-          <input
-            type="text"
+          <Form.Input
+            fluid
+            id="lastName"
             placeholder="Last Name"
             onChange={this.updateAccount.bind(this)}
-            id="lastName"
           />
-        </Form.Field>
-        <Form.Field>
-          <label>Email</label>
-          <input
-            type="text"
+          <Form.Input
+            fluid
+            id="email"
             placeholder="Email"
             onChange={this.updateAccount.bind(this)}
-            id="email"
           />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={this.updateAccount.bind(this)}
+          <Form.Input
+            fluid
             id="password"
+            placeholder="Password"
+            type="password"
+            onChange={this.updateAccount.bind(this)}
           />
-        </Form.Field>
-        <Button onClick={this.createAccount.bind(this)} secondary fluid>Create Account</Button>
+
+          <Button
+            color="orange"
+            fluid
+            size="large"
+            onClick={this.createAccount.bind(this)}
+            content="Create Account"
+          />
+        </Segment>
       </Form>
     );
   }
 }
 
-export default Register;
+export default RegisterForm;
