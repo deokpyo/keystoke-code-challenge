@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import { Card, Icon, Image, Message } from "semantic-ui-react";
+import { Card, Image, Message } from "semantic-ui-react";
 
 const imageLink =
   "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";

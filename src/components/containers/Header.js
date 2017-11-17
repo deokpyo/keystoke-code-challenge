@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import request from "superagent";
 import {
   Container,
-  Grid,
   Button,
   Image,
   Menu,

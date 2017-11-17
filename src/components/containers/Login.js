@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Message,
-  Segment,
-  Label,
-  Icon
-} from "semantic-ui-react";
+import { Grid, Header, Image } from "semantic-ui-react";
 import { LoginForm, RegisterForm } from "../unit";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
