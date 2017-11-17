@@ -1,6 +1,6 @@
 import Users from "./Users";
-import Header from "./Header";
+import Nav from "./Nav";
 import Login from "./Login";
-import Dashboard from "./Dashboard";
+import Layout from "./Layout";
 
-export { Users, Header, Login, Dashboard };
+export { Users, Nav, Login, Layout };

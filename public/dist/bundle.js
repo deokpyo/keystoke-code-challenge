@@ -27062,30 +27062,30 @@ module.exports = isObject;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Dashboard = exports.Login = exports.Header = exports.Users = undefined;
+exports.Layout = exports.Login = exports.Nav = exports.Users = undefined;
 
 var _Users = __webpack_require__(888);
 
 var _Users2 = _interopRequireDefault(_Users);
 
-var _Header = __webpack_require__(901);
+var _Nav = __webpack_require__(912);
 
-var _Header2 = _interopRequireDefault(_Header);
+var _Nav2 = _interopRequireDefault(_Nav);
 
 var _Login = __webpack_require__(902);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Dashboard = __webpack_require__(903);
+var _Layout = __webpack_require__(910);
 
-var _Dashboard2 = _interopRequireDefault(_Dashboard);
+var _Layout2 = _interopRequireDefault(_Layout);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Users = _Users2.default;
-exports.Header = _Header2.default;
+exports.Nav = _Nav2.default;
 exports.Login = _Login2.default;
-exports.Dashboard = _Dashboard2.default;
+exports.Layout = _Layout2.default;
 
 /***/ }),
 /* 398 */
@@ -77130,7 +77130,7 @@ var Home = function (_Component) {
         _react2.default.createElement(
           _semanticUiReact.Transition,
           { visible: !loading, animation: "scale", duration: 500 },
-          this.props.currentUser == null ? _react2.default.createElement(_containers.Login, null) : _react2.default.createElement(_containers.Dashboard, null)
+          this.props.currentUser == null ? _react2.default.createElement(_containers.Login, null) : _react2.default.createElement(_containers.Layout, null)
         )
       );
     }
@@ -80113,7 +80113,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var CLIENT_ID = "898994729966-9j1svqlm4rosi7uiu0p6tidhsatkeerq.apps.googleusercontent.com";
+var CLIENT_ID = "471675627804-v0ore9e9tsstbvfa082p51bmbnortonf.apps.googleusercontent.com";
 
 var GoogleLoginButton = function (_Component) {
   _inherits(GoogleLoginButton, _Component);
@@ -80169,259 +80169,7 @@ exports.default = GoogleLoginButton;
 !function(e,t){ true?module.exports=t(__webpack_require__(1)):"function"==typeof define&&define.amd?define(["react"],t):"object"==typeof exports?exports.GoogleLogin=t(require("react")):e.GoogleLogin=t(e.react)}(this,function(e){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=3)}([function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var a=n(1),s=n.n(a),u=n(2),c=(n.n(u),function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}()),l=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.signIn=n.signIn.bind(n),n.state={disabled:!0},n}return i(t,e),c(t,[{key:"componentDidMount",value:function(){var e=this,t=this.props,n=t.clientId,o=t.cookiePolicy,r=t.loginHint,i=t.hostedDomain,a=t.autoLoad,s=t.isSignedIn,u=t.fetchBasicProfile,c=t.redirectUri,l=t.discoveryDocs,f=t.onFailure,p=t.uxMode,d=t.scope;!function(e,t,n,o){var r=e.getElementsByTagName(t)[0],i=r,a=r;a=e.createElement(t),a.id="google-login",a.src="//apis.google.com/js/client:platform.js",i.parentNode.insertBefore(a,i),a.onload=o}(document,"script",0,function(){var t={client_id:n,cookie_policy:o,login_hint:r,hosted_domain:i,fetch_basic_profile:u,discoveryDocs:l,ux_mode:p,redirect_uri:c,scope:d};window.gapi.load("auth2",function(){e.setState({disabled:!1}),window.gapi.auth2.getAuthInstance()||window.gapi.auth2.init(t).then(function(t){s&&t.isSignedIn.get()&&e._handleSigninSuccess(t.currentUser.get())},function(e){return f(e)}),a&&e.signIn()})})}},{key:"signIn",value:function(e){var t=this;if(e&&e.preventDefault(),!this.state.disabled){var n=window.gapi.auth2.getAuthInstance(),o=this.props,r=o.onSuccess,i=o.onRequest,a=o.onFailure,s=o.prompt,u=o.responseType,c={prompt:s};i(),"code"===u?n.grantOfflineAccess(c).then(function(e){return r(e)},function(e){return a(e)}):n.signIn(c).then(function(e){return t._handleSigninSuccess(e)},function(e){return a(e)})}}},{key:"_handleSigninSuccess",value:function(e){var t=e.getBasicProfile(),n=e.getAuthResponse();e.googleId=t.getId(),e.tokenObj=n,e.tokenId=n.id_token,e.accessToken=n.access_token,e.profileObj={googleId:t.getId(),imageUrl:t.getImageUrl(),email:t.getEmail(),name:t.getName(),givenName:t.getGivenName(),familyName:t.getFamilyName()},this.props.onSuccess(e)}},{key:"render",value:function(){var e=this.props,t=e.tag,n=e.type,o=e.style,r=e.className,i=e.disabledStyle,a=e.buttonText,u=e.children,c=this.state.disabled||this.props.disabled,l={display:"inline-block",background:"#d14836",color:"#fff",width:190,paddingTop:10,paddingBottom:10,borderRadius:2,border:"1px solid transparent",fontSize:16,fontWeight:"bold",fontFamily:"Roboto"},f=function(){return o||(r&&!o?{}:l)}(),p=function(){return c?Object.assign({},f,i):f}();return s.a.createElement(t,{onClick:this.signIn,style:p,type:n,disabled:c,className:r},u||a)}}]),t}(a.Component);l.defaultProps={type:"button",tag:"button",buttonText:"Login with Google",scope:"profile email",prompt:"",cookiePolicy:"single_host_origin",fetchBasicProfile:!0,isSignedIn:!1,uxMode:"popup",disabledStyle:{opacity:.6},onRequest:function(){}},t.a=l},function(t,n){t.exports=e},function(e,t,n){"function"==typeof Symbol&&Symbol.iterator,e.exports=n(5)()},function(e,t,n){e.exports=n(4)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=n(0);n.d(t,"default",function(){return o.a}),n.d(t,"GoogleLogin",function(){return o.a});var r=n(9);n.d(t,"GoogleLogout",function(){return r.a})},function(e,t,n){"use strict";var o=n(6),r=n(7),i=n(8);e.exports=function(){function e(e,t,n,o,a,s){s!==i&&r(!1,"Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types")}function t(){return e}e.isRequired=e;var n={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t};return n.checkPropTypes=o,n.PropTypes=n,n}},function(e,t,n){"use strict";function o(e){return function(){return e}}var r=function(){};r.thatReturns=o,r.thatReturnsFalse=o(!1),r.thatReturnsTrue=o(!0),r.thatReturnsNull=o(null),r.thatReturnsThis=function(){return this},r.thatReturnsArgument=function(e){return e},e.exports=r},function(e,t,n){"use strict";function o(e,t,n,o,i,a,s,u){if(r(t),!e){var c;if(void 0===t)c=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,o,i,a,s,u],f=0;c=new Error(t.replace(/%s/g,function(){return l[f++]})),c.name="Invariant Violation"}throw c.framesToPop=1,c}}var r=function(e){};e.exports=o},function(e,t,n){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function i(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var a=n(1),s=n.n(a),u=n(2),c=(n.n(u),function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}()),l=function(e){function t(e){o(this,t);var n=r(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={disabled:!0},n.signOut=n.signOut.bind(n),n}return i(t,e),c(t,[{key:"componentDidMount",value:function(){var e=this;!function(e,t,n,o){var r=e.getElementsByTagName(t)[0],i=r,a=r;a=e.createElement(t),a.id="google-login",a.src="//apis.google.com/js/client:platform.js",i.parentNode.insertBefore(a,i),a.onload=o}(document,"script",0,function(){window.gapi.load("auth2",function(){e.setState({disabled:!1})})})}},{key:"signOut",value:function(){var e=window.gapi.auth2.getAuthInstance();null!=e&&e.signOut().then(this.props.onLogoutSuccess)}},{key:"render",value:function(){var e=this.props,t=e.tag,n=e.style,o=e.className,r=e.disabledStyle,i=e.buttonText,a=e.children,u=this.state.disabled||this.props.disabled,c={display:"inline-block",background:"#d14836",color:"#fff",width:190,paddingTop:10,paddingBottom:10,borderRadius:2,border:"1px solid transparent",fontSize:16,fontWeight:"bold",fontFamily:"Roboto"},l=function(){return n||(o&&!n?{}:c)}(),f=function(){return u?Object.assign({},l,r):l}();return s.a.createElement(t,{onClick:this.signOut,style:f,disabled:u,className:o},a||i)}}]),t}(a.Component);l.defaultProps={tag:"button",buttonText:"Logout",responseType:"permission",disabledStyle:{opacity:.6},onRequest:function(){}},t.a=l}])});
 
 /***/ }),
-/* 901 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(62);
-
-var _superagent = __webpack_require__(395);
-
-var _superagent2 = _interopRequireDefault(_superagent);
-
-var _semanticUiReact = __webpack_require__(25);
-
-var _utils = __webpack_require__(126);
-
-var _unit = __webpack_require__(77);
-
-var _actions = __webpack_require__(127);
-
-var _actions2 = _interopRequireDefault(_actions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CLOUDINARY_UPLOAD_PRESET = "mcbgaoxt";
-var CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/dspcivept/upload";
-var imageLink = "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
-
-var Header = function (_Component) {
-  _inherits(Header, _Component);
-
-  function Header() {
-    _classCallCheck(this, Header);
-
-    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
-
-    _this.state = {
-      modal: false
-    };
-    return _this;
-  }
-
-  _createClass(Header, [{
-    key: "logout",
-    value: function logout() {
-      var _this2 = this;
-
-      // check for logged in user
-      _utils.APIManager.get("/users/logout", null, function (err, response) {
-        if (err) {
-          alert(err);
-          return;
-        }
-        // user is logged out
-        _this2.props.currentUserReceived(null);
-      });
-    }
-  }, {
-    key: "update",
-    value: function update(account) {
-      var _this3 = this;
-
-      _utils.APIManager.put("/api/user/" + account.id, account, function (err, response) {
-        if (err) {
-          var msg = err.message || err;
-          alert(msg);
-          return;
-        }
-        alert("Profile has been updated.");
-        _this3.props.userUpdated(response.results);
-        _this3.setState({
-          modal: false
-        });
-      });
-    }
-  }, {
-    key: "uploadImage",
-    value: function uploadImage(imageFile, currentUser) {
-      var _this4 = this;
-
-      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field("upload_preset", CLOUDINARY_UPLOAD_PRESET).field("file", imageFile);
-
-      upload.end(function (err, response) {
-        if (err) {
-          console.error(err);
-        }
-        currentUser["image"] = response.body.public_id + "." + response.body.format;
-        _this4.update(currentUser);
-      });
-    }
-  }, {
-    key: "openModal",
-    value: function openModal() {
-      this.setState({
-        modal: true
-      });
-    }
-  }, {
-    key: "closeModal",
-    value: function closeModal() {
-      this.setState({
-        modal: false
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var imgSource = null;
-      if (this.props.currentUser.image) {
-        imgSource = imageLink + this.props.currentUser.image;
-      } else {
-        imgSource = "./images/default.png";
-      }
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(
-          _semanticUiReact.Menu,
-          { fixed: "top", inverted: true, borderless: true },
-          _react2.default.createElement(
-            _semanticUiReact.Container,
-            null,
-            _react2.default.createElement(
-              _semanticUiReact.Menu.Item,
-              { header: true },
-              _react2.default.createElement(_semanticUiReact.Image, {
-                size: "mini",
-                src: "./images/icon.png",
-                style: { marginRight: "1.5em" }
-              }),
-              _react2.default.createElement(
-                "h2",
-                { style: { margin: 0 } },
-                "Welcome ",
-                this.props.currentUser.firstName,
-                "!"
-              )
-            ),
-            _react2.default.createElement(
-              _semanticUiReact.Menu.Menu,
-              { position: "right" },
-              _react2.default.createElement(
-                _semanticUiReact.Menu.Item,
-                null,
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyMobile, {
-                  color: "orange",
-                  inverted: true,
-                  onClick: this.openModal.bind(this),
-                  icon: "edit"
-                })),
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyTablet, {
-                  color: "orange",
-                  inverted: true,
-                  onClick: this.openModal.bind(this),
-                  icon: "edit"
-                })),
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyComputer, {
-                  color: "orange",
-                  inverted: true,
-                  onClick: this.openModal.bind(this),
-                  content: "Edit Profile"
-                }))
-              ),
-              _react2.default.createElement(
-                _semanticUiReact.Menu.Item,
-                null,
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyMobile, {
-                  inverted: true,
-                  onClick: this.logout.bind(this),
-                  icon: "sign out"
-                })),
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyTablet, {
-                  inverted: true,
-                  onClick: this.logout.bind(this),
-                  icon: "sign out"
-                })),
-                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
-                  as: _semanticUiReact.Button
-                }, _semanticUiReact.Responsive.onlyComputer, {
-                  inverted: true,
-                  onClick: this.logout.bind(this),
-                  content: "Log Out"
-                }))
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(_unit.EditModal, {
-          open: this.state.modal,
-          onUpdate: this.update.bind(this),
-          onUpload: this.uploadImage.bind(this),
-          onClose: this.closeModal.bind(this),
-          user: this.props.currentUser,
-          image: imgSource
-        })
-      );
-    }
-  }]);
-
-  return Header;
-}(_react.Component);
-
-var stateToProps = function stateToProps(state) {
-  return {
-    currentUser: state.user.currentUser
-  };
-};
-
-var dispatchToProps = function dispatchToProps(dispatch) {
-  return {
-    userCreated: function userCreated(user) {
-      return dispatch(_actions2.default.userCreated(user));
-    },
-    userUpdated: function userUpdated(user) {
-      return dispatch(_actions2.default.userUpdated(user));
-    },
-    currentUserReceived: function currentUserReceived(user) {
-      return dispatch(_actions2.default.currentUserReceived(user));
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Header);
-
-/***/ }),
+/* 901 */,
 /* 902 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -80601,95 +80349,7 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Login);
 
 /***/ }),
-/* 903 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ = __webpack_require__(397);
-
-var _semanticUiReact = __webpack_require__(25);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Dashboard = function (_Component) {
-  _inherits(Dashboard, _Component);
-
-  function Dashboard() {
-    _classCallCheck(this, Dashboard);
-
-    return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).apply(this, arguments));
-  }
-
-  _createClass(Dashboard, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_.MainHeader, null),
-        _react2.default.createElement(
-          _semanticUiReact.Container,
-          { style: { marginTop: "8em" } },
-          _react2.default.createElement(
-            _semanticUiReact.Grid,
-            { stackable: true },
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Row,
-              null,
-              _react2.default.createElement(
-                _semanticUiReact.Grid.Column,
-                { width: 16 },
-                _react2.default.createElement(
-                  _semanticUiReact.Header,
-                  { as: "h3" },
-                  _react2.default.createElement(_semanticUiReact.Icon, { name: "users" }),
-                  _react2.default.createElement(
-                    _semanticUiReact.Header.Content,
-                    null,
-                    "Current Users"
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Row,
-              null,
-              _react2.default.createElement(
-                _semanticUiReact.Grid.Column,
-                { width: 16 },
-                _react2.default.createElement(_.CurrentUsers, null)
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Dashboard;
-}(_react.Component);
-
-exports.default = Dashboard;
-
-/***/ }),
+/* 903 */,
 /* 904 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -80832,6 +80492,351 @@ exports.default = function () {
       return state;
   }
 };
+
+/***/ }),
+/* 908 */,
+/* 909 */,
+/* 910 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ = __webpack_require__(397);
+
+var _semanticUiReact = __webpack_require__(25);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Layout = function (_Component) {
+  _inherits(Layout, _Component);
+
+  function Layout() {
+    _classCallCheck(this, Layout);
+
+    return _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
+  }
+
+  _createClass(Layout, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_.Nav, null),
+        _react2.default.createElement(
+          _semanticUiReact.Container,
+          { style: { marginTop: "8em" } },
+          _react2.default.createElement(
+            _semanticUiReact.Grid,
+            { stackable: true },
+            _react2.default.createElement(
+              _semanticUiReact.Grid.Row,
+              null,
+              _react2.default.createElement(
+                _semanticUiReact.Grid.Column,
+                { width: 16 },
+                _react2.default.createElement(
+                  _semanticUiReact.Header,
+                  { as: "h3" },
+                  _react2.default.createElement(_semanticUiReact.Icon, { name: "users" }),
+                  _react2.default.createElement(
+                    _semanticUiReact.Header.Content,
+                    null,
+                    "Current Users"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Grid.Row,
+              null,
+              _react2.default.createElement(
+                _semanticUiReact.Grid.Column,
+                { width: 16 },
+                _react2.default.createElement(_.Users, null)
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Layout;
+}(_react.Component);
+
+exports.default = Layout;
+
+/***/ }),
+/* 911 */,
+/* 912 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(62);
+
+var _superagent = __webpack_require__(395);
+
+var _superagent2 = _interopRequireDefault(_superagent);
+
+var _semanticUiReact = __webpack_require__(25);
+
+var _utils = __webpack_require__(126);
+
+var _unit = __webpack_require__(77);
+
+var _actions = __webpack_require__(127);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CLOUDINARY_UPLOAD_PRESET = "mcbgaoxt";
+var CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/dspcivept/upload";
+var imageLink = "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
+
+var Nav = function (_Component) {
+  _inherits(Nav, _Component);
+
+  function Nav() {
+    _classCallCheck(this, Nav);
+
+    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this));
+
+    _this.state = {
+      modal: false
+    };
+    return _this;
+  }
+
+  _createClass(Nav, [{
+    key: "logout",
+    value: function logout() {
+      var _this2 = this;
+
+      // check for logged in user
+      _utils.APIManager.get("/users/logout", null, function (err, response) {
+        if (err) {
+          alert(err);
+          return;
+        }
+        // user is logged out
+        _this2.props.currentUserReceived(null);
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(account) {
+      var _this3 = this;
+
+      _utils.APIManager.put("/api/user/" + account.id, account, function (err, response) {
+        if (err) {
+          var msg = err.message || err;
+          alert(msg);
+          return;
+        }
+        alert("Profile has been updated.");
+        _this3.props.userUpdated(response.results);
+        _this3.setState({
+          modal: false
+        });
+      });
+    }
+  }, {
+    key: "uploadImage",
+    value: function uploadImage(imageFile, currentUser) {
+      var _this4 = this;
+
+      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field("upload_preset", CLOUDINARY_UPLOAD_PRESET).field("file", imageFile);
+
+      upload.end(function (err, response) {
+        if (err) {
+          console.error(err);
+        }
+        currentUser["image"] = response.body.public_id + "." + response.body.format;
+        _this4.update(currentUser);
+      });
+    }
+  }, {
+    key: "openModal",
+    value: function openModal() {
+      this.setState({
+        modal: true
+      });
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        modal: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var imgSource = null;
+      if (this.props.currentUser.image) {
+        imgSource = imageLink + this.props.currentUser.image;
+      } else {
+        imgSource = "./images/default.png";
+      }
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          _semanticUiReact.Menu,
+          { fixed: "top", inverted: true, borderless: true },
+          _react2.default.createElement(
+            _semanticUiReact.Container,
+            null,
+            _react2.default.createElement(
+              _semanticUiReact.Menu.Item,
+              { header: true },
+              _react2.default.createElement(_semanticUiReact.Image, {
+                size: "mini",
+                src: "./images/icon.png",
+                style: { marginRight: "1.5em" }
+              }),
+              _react2.default.createElement(
+                "h2",
+                { style: { margin: 0 } },
+                "Welcome ",
+                this.props.currentUser.firstName,
+                "!"
+              )
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Menu.Menu,
+              { position: "right" },
+              _react2.default.createElement(
+                _semanticUiReact.Menu.Item,
+                null,
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyMobile, {
+                  color: "orange",
+                  inverted: true,
+                  onClick: this.openModal.bind(this),
+                  icon: "edit"
+                })),
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyTablet, {
+                  color: "orange",
+                  inverted: true,
+                  onClick: this.openModal.bind(this),
+                  icon: "edit"
+                })),
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyComputer, {
+                  color: "orange",
+                  inverted: true,
+                  onClick: this.openModal.bind(this),
+                  content: "Edit Profile"
+                }))
+              ),
+              _react2.default.createElement(
+                _semanticUiReact.Menu.Item,
+                null,
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyMobile, {
+                  inverted: true,
+                  onClick: this.logout.bind(this),
+                  icon: "sign out"
+                })),
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyTablet, {
+                  inverted: true,
+                  onClick: this.logout.bind(this),
+                  icon: "sign out"
+                })),
+                _react2.default.createElement(_semanticUiReact.Responsive, _extends({
+                  as: _semanticUiReact.Button
+                }, _semanticUiReact.Responsive.onlyComputer, {
+                  inverted: true,
+                  onClick: this.logout.bind(this),
+                  content: "Log Out"
+                }))
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(_unit.EditModal, {
+          open: this.state.modal,
+          onUpdate: this.update.bind(this),
+          onUpload: this.uploadImage.bind(this),
+          onClose: this.closeModal.bind(this),
+          user: this.props.currentUser,
+          image: imgSource
+        })
+      );
+    }
+  }]);
+
+  return Nav;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+  return {
+    currentUser: state.user.currentUser
+  };
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+  return {
+    userCreated: function userCreated(user) {
+      return dispatch(_actions2.default.userCreated(user));
+    },
+    userUpdated: function userUpdated(user) {
+      return dispatch(_actions2.default.userUpdated(user));
+    },
+    currentUserReceived: function currentUserReceived(user) {
+      return dispatch(_actions2.default.currentUserReceived(user));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Nav);
 
 /***/ })
 /******/ ]);

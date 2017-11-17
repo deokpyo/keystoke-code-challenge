@@ -4,7 +4,7 @@ var controllers = require("../controllers");
 var bcrypt = require("bcryptjs");
 var utils = require("../utils");
 // uncomment below for local development
-// require("dotenv").config();
+require("dotenv").config();
 
 router.get("/:action", function(req, res, next) {
   var action = req.params.action;

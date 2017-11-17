@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import { CurrentUsers, Profile, MainHeader } from "./";
+import { Users, Nav } from "./";
 import { Container, Grid, Icon, Header } from "semantic-ui-react";
 
-class Dashboard extends Component {
+class Layout extends Component {
+  constructor() {
+    super();
+  }
+
   render() {
     return (
       <div>
-        <MainHeader />
+        <Nav />
         <Container style={{ marginTop: "8em" }}>
           <Grid stackable>
             <Grid.Row>
@@ -19,7 +23,7 @@ class Dashboard extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column width={16}>
-                <CurrentUsers />
+                <Users />
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -29,4 +33,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default Layout;

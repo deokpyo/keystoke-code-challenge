@@ -18,7 +18,7 @@ const CLOUDINARY_UPLOAD_URL =
 const imageLink =
   "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
 
-class Header extends Component {
+class Nav extends Component {
   constructor() {
     super();
     this.state = {
@@ -178,4 +178,4 @@ const dispatchToProps = dispatch => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(Header);
+export default connect(stateToProps, dispatchToProps)(Nav);
