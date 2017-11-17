@@ -16,7 +16,7 @@ var app = express();
 
 // set up mongo db connection
 mongoose
-  .connect(process.env.DB_HOST, {
+  .connect(process.env.MONGODB_URI, {
     useMongoClient: true
   })
   .then(function(res) {
