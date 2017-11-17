@@ -6,7 +6,8 @@ var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var sessions = require("client-sessions");
-require("dotenv").config();
+// uncomment below for local development
+// require("dotenv").config(); 
 
 var index = require("./routes/index");
 var api = require("./routes/api");

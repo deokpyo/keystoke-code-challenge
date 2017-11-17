@@ -3,7 +3,8 @@ var router = express.Router();
 var controllers = require("../controllers");
 var bcrypt = require("bcryptjs");
 var utils = require("../utils");
-require("dotenv").config();
+// uncomment below for local development
+// require("dotenv").config();
 
 router.get("/:action", function(req, res, next) {
   var action = req.params.action;
