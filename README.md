@@ -1,5 +1,5 @@
 # Keystoke Code Challenge
-This is a MERN stack web application built using **ReactJS**, **Redux**, **Semantic UI React**, **NodeJS**, **ExpressJS**, and **MongoDB**.
+This is a mobile-responsive MERN stack web application built using **ReactJS**, **Redux**, **Semantic UI React**, **NodeJS**, **ExpressJS**, and **MongoDB**.
 - Check out the live demo at https://keystoke-jimmy.herokuapp.com
 
 ## Requirements
