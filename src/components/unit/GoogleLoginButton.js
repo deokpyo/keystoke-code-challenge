@@ -3,7 +3,7 @@ import GoogleLogin from "react-google-login";
 import { Icon } from "semantic-ui-react";
 
 const CLIENT_ID =
-  "898994729966-9j1svqlm4rosi7uiu0p6tidhsatkeerq.apps.googleusercontent.com";
+  "471675627804-v0ore9e9tsstbvfa082p51bmbnortonf.apps.googleusercontent.com";
 
 class GoogleLoginButton extends Component {
   constructor() {
