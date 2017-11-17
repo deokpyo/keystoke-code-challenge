@@ -5,7 +5,7 @@ import { UserCard } from "../unit";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
 
-class CurrentUsers extends Component {
+class Users extends Component {
   constructor() {
     super();
     this.state = {
@@ -61,4 +61,4 @@ const dispatchToProps = dispatch => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(CurrentUsers);
+export default connect(stateToProps, dispatchToProps)(Users);

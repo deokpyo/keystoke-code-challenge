@@ -29,9 +29,9 @@ class EditModal extends Component {
     };
   }
 
-  updateInput(event) {
+  updateInput(attr, event) {
     let updated = Object.assign({}, this.state.user);
-    updated[event.target.id] = event.target.value;
+    updated[attr] = event.target.value;
     this.setState({
       user: updated
     });
@@ -100,8 +100,7 @@ class EditModal extends Component {
                     <input
                       type="text"
                       value={this.state.user.firstName}
-                      onChange={this.updateInput.bind(this)}
-                      id="firstName"
+                      onChange={this.updateInput.bind(this, "firstName")}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -109,18 +108,16 @@ class EditModal extends Component {
                     <input
                       type="text"
                       value={this.state.user.lastName}
-                      onChange={this.updateInput.bind(this)}
-                      id="lastName"
+                      onChange={this.updateInput.bind(this, "lastName")}
                     />
                   </Form.Field>
                   <Form.TextArea
-                    id="description"
                     label="Description"
                     value={
                       this.state.user.description || "User has no description."
                     }
                     placeholder="Description"
-                    onChange={this.updateInput.bind(this)}
+                    onChange={this.updateInput.bind(this, "description")}
                   />
                 </Form>
               </Grid.Column>

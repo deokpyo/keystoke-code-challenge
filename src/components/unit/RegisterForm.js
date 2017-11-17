@@ -1,65 +1,123 @@
 import React, { Component } from "react";
-import { Button, Form, Segment } from "semantic-ui-react";
+import { Button, Form, Segment, Message, Label, Icon } from "semantic-ui-react";
+import { GoogleLoginButton } from "./";
 
 class RegisterForm extends Component {
   constructor() {
     super();
     this.state = {
-      account: {}
+      account: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        isGoogle: false
+      }
     };
   }
 
-  updateAccount(event) {
+  updateAccount(attr, event) {
     let updated = Object.assign({}, this.state.account);
-    updated[event.target.id] = event.target.value;
+    updated[attr] = event.target.value;
     this.setState({
       account: updated
     });
   }
   createAccount(event) {
     event.preventDefault();
+    if (
+      !this.state.account.firstName ||
+      !this.state.account.lastName ||
+      !this.state.account.email ||
+      !this.state.account.password
+    ) {
+      alert("Please fill out all required fields.");
+      return;
+    }
     this.props.onRegister(this.state.account);
+  }
+  onGoogleSignUp(profile) {
+    const googleProfile = {
+      firstName: profile.givenName,
+      lastName: profile.familyName,
+      email: profile.email,
+      isGoogle: true
+    };
+    this.setState({
+      account: googleProfile
+    });
+  }
+  showLogin() {
+    this.props.onShowLogin();
+  }
+  resetFields() {
+    const reset = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      isGoogle: false
+    };
+    this.setState({
+      account: reset
+    });
   }
 
   render() {
     return (
-      <Form size="large">
-        <Segment stacked>
-          <Form.Input
-            fluid
-            id="firstName"
-            placeholder="First Name"
-            onChange={this.updateAccount.bind(this)}
-          />
-          <Form.Input
-            fluid
-            id="lastName"
-            placeholder="Last Name"
-            onChange={this.updateAccount.bind(this)}
-          />
-          <Form.Input
-            fluid
-            id="email"
-            placeholder="Email"
-            onChange={this.updateAccount.bind(this)}
-          />
-          <Form.Input
-            fluid
-            id="password"
-            placeholder="Password"
-            type="password"
-            onChange={this.updateAccount.bind(this)}
-          />
+      <div>
+        <Form size="large">
+          <Segment stacked>
+            <GoogleLoginButton
+              onResponse={this.onGoogleSignUp.bind(this)}
+              buttonName="Sign up with Google"
+            />
+            <br />
+            <Form.Input
+              fluid
+              placeholder="First Name (required)"
+              type="text"
+              value={this.state.account.firstName}
+              onChange={this.updateAccount.bind(this, "firstName")}
+            />
+            <Form.Input
+              fluid
+              placeholder="Last Name (required)"
+              type="text"
+              value={this.state.account.lastName}
+              onChange={this.updateAccount.bind(this, "lastName")}
+            />
+            <Form.Input
+              fluid
+              disabled={this.state.account.isGoogle}
+              placeholder="Email (required)"
+              type="email"
+              value={this.state.account.email}
+              onChange={this.updateAccount.bind(this, "email")}
+            />
+            <Form.Input
+              fluid
+              placeholder="Password (required)"
+              type="password"
+              onChange={this.updateAccount.bind(this, "password")}
+            />
 
-          <Button
-            color="orange"
-            fluid
-            size="large"
-            onClick={this.createAccount.bind(this)}
-            content="Create Account"
-          />
-        </Segment>
-      </Form>
+            <Button
+              color="orange"
+              fluid
+              size="large"
+              onClick={this.createAccount.bind(this)}
+              content="Create Account"
+            />
+          </Segment>
+        </Form>
+        <Message>
+          <Label as="a" onClick={this.showLogin.bind(this)} color="grey">
+            <Icon name="arrow circle left" />Back to Login
+          </Label>
+          <Label as="a" onClick={this.resetFields.bind(this)} color="black">
+            <Icon name="refresh" />Reset all fields
+          </Label>
+        </Message>
+      </div>
     );
   }
 }

@@ -15,7 +15,7 @@ import { LoginForm, RegisterForm } from "../unit";
 import { APIManager } from "../../utils";
 import actions from "../../actions";
 
-class LoginLayout extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,6 +25,17 @@ class LoginLayout extends Component {
 
   login(credentials) {
     APIManager.post("/users/login", credentials, (err, response) => {
+      if (err) {
+        let msg = err.message || err;
+        alert(msg);
+        return;
+      }
+      this.props.currentUserReceived(response.profile);
+    });
+  }
+
+  loginGoogle(credentials) {
+    APIManager.post("/users/googlelogin", credentials, (err, response) => {
       if (err) {
         let msg = err.message || err;
         alert(msg);
@@ -74,33 +85,21 @@ class LoginLayout extends Component {
                 <Header as="h2" color="orange" textAlign="center">
                   Login to your account
                 </Header>
-                <LoginForm onLogin={this.login.bind(this)} />
-                <Message>
-                  Don't have an account?{" "}
-                  <Label
-                    as="a"
-                    onClick={this.showRegisterForm.bind(this)}
-                    color="grey"
-                  >
-                    <Icon name="add user" />Create Account
-                  </Label>
-                </Message>
+                <LoginForm
+                  onLogin={this.login.bind(this)}
+                  onGoogleLogin={this.loginGoogle.bind(this)}
+                  onShowRegister={this.showRegisterForm.bind(this)}
+                />
               </div>
             ) : (
               <div>
                 <Header as="h2" color="orange" textAlign="center">
                   Create a New Account
                 </Header>
-                <RegisterForm onRegister={this.register.bind(this)} />
-                <Message>
-                  <Label
-                    as="a"
-                    onClick={this.showLoginForm.bind(this)}
-                    color="grey"
-                  >
-                    <Icon name="arrow circle left" />Back to Login
-                  </Label>
-                </Message>
+                <RegisterForm
+                  onRegister={this.register.bind(this)}
+                  onShowLogin={this.showLoginForm.bind(this)}
+                />
               </div>
             )}
           </Grid.Column>
@@ -123,4 +122,4 @@ const dispatchToProps = dispatch => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(LoginLayout);
+export default connect(stateToProps, dispatchToProps)(Login);

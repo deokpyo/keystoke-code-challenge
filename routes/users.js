@@ -3,7 +3,7 @@ var router = express.Router();
 var controllers = require("../controllers");
 var bcrypt = require("bcryptjs");
 var utils = require("../utils");
-require('dotenv').config();
+require("dotenv").config();
 
 router.get("/:action", function(req, res, next) {
   var action = req.params.action;
@@ -86,7 +86,8 @@ router.post("/login", function(req, res, next) {
       if (profiles.length == 0) {
         res.json({
           confirm: "fail",
-          message: "profile not found."
+          message:
+            "This account does not exist on our system. Please register before you login."
         });
         return;
       }
@@ -103,6 +104,42 @@ router.post("/login", function(req, res, next) {
         });
         return;
       }
+      // login success:
+      // create a signed token
+      var token = utils.JWT.sign({ id: profile._id }, process.env.TOKEN_SECRET);
+      req.session.token = token;
+
+      res.json({
+        confirm: "success",
+        profile: profile.summary(),
+        token: token
+      });
+    })
+    .catch(function(err) {
+      res.json({
+        confirm: "fail",
+        message: err
+      });
+    });
+});
+
+router.post("/googlelogin", function(req, res, next) {
+  var credentials = req.body;
+
+  controllers.user
+    .find({ email: credentials.email }, true)
+    .then(function(profiles) {
+      if (profiles.length == 0) {
+        res.json({
+          confirm: "fail",
+          message:
+            "This account does not exist on our system. Please register before you login."
+        });
+        return;
+      }
+
+      var profile = profiles[0];
+
       // login success:
       // create a signed token
       var token = utils.JWT.sign({ id: profile._id }, process.env.TOKEN_SECRET);

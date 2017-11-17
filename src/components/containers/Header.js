@@ -5,7 +5,6 @@ import {
   Container,
   Grid,
   Button,
-  Header,
   Image,
   Menu,
   Responsive
@@ -20,7 +19,7 @@ const CLOUDINARY_UPLOAD_URL =
 const imageLink =
   "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
 
-class MainHeader extends Component {
+class Header extends Component {
   constructor() {
     super();
     this.state = {
@@ -180,4 +179,4 @@ const dispatchToProps = dispatch => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(MainHeader);
+export default connect(stateToProps, dispatchToProps)(Header);

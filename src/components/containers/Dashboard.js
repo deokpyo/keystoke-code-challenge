@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CurrentUsers, Profile, MainHeader } from "./";
 import { Container, Grid, Icon, Header } from "semantic-ui-react";
 
-class DashboardLayout extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div>
@@ -29,4 +29,4 @@ class DashboardLayout extends Component {
   }
 }
 
-export default DashboardLayout;
+export default Dashboard;

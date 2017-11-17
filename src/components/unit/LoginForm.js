@@ -1,5 +1,17 @@
 import React, { Component } from "react";
-import { Button, Form, Divider, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Divider,
+  Segment,
+  Message,
+  Label,
+  Icon
+} from "semantic-ui-react";
+import { GoogleLoginButton } from "./";
+
+const CLIENT_ID =
+  "898994729966-9j1svqlm4rosi7uiu0p6tidhsatkeerq.apps.googleusercontent.com";
 
 class LoginForm extends Component {
   constructor() {
@@ -9,50 +21,81 @@ class LoginForm extends Component {
     };
   }
 
-  updateAccount(event) {
+  updateAccount(attr, event) {
     let updated = Object.assign({}, this.state.account);
-    updated[event.target.id] = event.target.value;
+    updated[attr] = event.target.value;
     this.setState({
       account: updated
     });
   }
 
-  login(event) {
+  submitLogin(event) {
     event.preventDefault();
+    if (!this.state.account.email) {
+      alert("Please enter your account email.");
+      return;
+    }
+    if (!this.state.account.password) {
+      alert("Please enter your account password.");
+      return;
+    }
     this.props.onLogin(this.state.account);
+  }
+
+  submitGoogleLogin(profile) {
+    const account = {
+      email: profile.email.toLowerCase()
+    };
+    this.props.onGoogleLogin(account);
+  }
+
+  showRegister() {
+    this.props.onShowRegister();
   }
 
   render() {
     return (
-      <Form size="large">
-        <Segment stacked>
-          <Form.Input
-            fluid
-            id="email"
-            icon="user"
-            iconPosition="left"
-            placeholder="Email"
-            onChange={this.updateAccount.bind(this)}
-          />
-          <Form.Input
-            fluid
-            id="password"
-            icon="lock"
-            iconPosition="left"
-            placeholder="Password"
-            onChange={this.updateAccount.bind(this)}
-            type="password"
-          />
-
-          <Button
-            color="orange"
-            fluid
-            size="large"
-            onClick={this.login.bind(this)}
-            content="Login"
-          />
-        </Segment>
-      </Form>
+      <div>
+        <Form size="large">
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Email"
+              type="email"
+              onChange={this.updateAccount.bind(this, "email")}
+            />
+            <Form.Input
+              fluid
+              icon="lock"
+              iconPosition="left"
+              placeholder="Password"
+              onChange={this.updateAccount.bind(this, "password")}
+              type="password"
+            />
+            <Button
+              color="orange"
+              fluid
+              size="large"
+              icon="sign in"
+              onClick={this.submitLogin.bind(this)}
+              content="Login"
+            />
+            <Divider horizontal>Or</Divider>
+            <GoogleLoginButton
+              onResponse={this.submitGoogleLogin.bind(this)}
+              buttonName="Login with Google"
+            />
+          </Segment>
+        </Form>
+        <Message>
+          Don't have an account?{"  "}
+          <Label as="a" onClick={this.showRegister.bind(this)} color="grey">
+            <Icon name="add user" />Create Account
+          </Label>
+        </Message>
+      </div>
     );
   }
 }

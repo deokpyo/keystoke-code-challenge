@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Loader, Dimmer, Transition } from "semantic-ui-react";
 import { APIManager } from "../utils";
-import { LoginLayout, DashboardLayout } from "./containers";
+import { Login, Dashboard } from "./containers";
 import actions from "../actions";
 
 class Home extends Component {
@@ -58,7 +58,7 @@ class Home extends Component {
           </Dimmer>
         </Transition>
         <Transition visible={!loading} animation="scale" duration={500}>
-          {this.props.currentUser == null ? <LoginLayout /> : <DashboardLayout />}
+          {this.props.currentUser == null ? <Login /> : <Dashboard />}
         </Transition>
       </div>
     );

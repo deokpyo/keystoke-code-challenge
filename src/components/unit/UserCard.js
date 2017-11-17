@@ -4,7 +4,6 @@ import { Card, Icon, Image, Message } from "semantic-ui-react";
 
 const imageLink =
   "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,c_fill,g_auto/";
-//  "https://res.cloudinary.com/dspcivept/image/upload/w_150,h_150,g_face,c_thumb/";
 
 const style = {
   height: "120px",

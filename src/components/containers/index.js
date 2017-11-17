@@ -1,6 +1,6 @@
-import CurrentUsers from "./CurrentUsers";
-import MainHeader from "./MainHeader";
-import LoginLayout from "./LoginLayout";
-import DashboardLayout from "./DashboardLayout";
+import Users from "./Users";
+import Header from "./Header";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
 
-export { CurrentUsers, MainHeader, LoginLayout, DashboardLayout };
+export { Users, Header, Login, Dashboard };
