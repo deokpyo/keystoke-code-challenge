@@ -21,7 +21,7 @@ After cloning into repo, cd to project root directory and run npm install:
 $ npm install
 ```
 
-Set up .env file in the project root directiory then fill out the three items as shown in .env-sample file
+Set up .env file in the project root directiory then fill out the three items as shown in .env-sample file:
 
 ```
 $ touch .env
